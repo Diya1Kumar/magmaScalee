@@ -1,0 +1,249 @@
+<div class="section4">
+    <div class="on-board-text">
+        <h1>How Do I Come On-Board?</h1>
+        <p>we collaborate with founders who are ready to take their ideas to the next level. Whether you're an early-stage startup seeking traction or a growing business in need of funding and hands-on support, our team is here to guide you. If you have a scalable idea and the ambition to build, we'll work closely with you to validate your business, secure capital, and accelerate growth.</p>
+    
+        <h4><img src="assets/tick2.png"/>Startups with scalable ideas seeking hands-on execution support. </h4>
+        <h4><img src="assets/tick2.png"/>Early-stage founders who need funding and traction to bring their vision to life.</h4>
+    
+        <img class="person" src ="assets/person.png"/>
+    </div>
+    <div class="on-board-img">  
+            <div class="form-container" id="apply-form">
+                <h2 style="filter: blur(1px); opacity: 0.9;">Coming Soon</h2>
+
+                <div class="coming-soon-popup" id="comingSoonPopup">
+                    <div class="popup-content">
+                        <h2>🚧 Coming Soon</h2>
+                        <p>The application form will be available shortly.</p>
+                        <button onclick="closePopup()">Close</button>
+                    </div>
+                </div>
+            <div class="form-content blurred-disabled">
+            <div *ngIf="submitSuccess" class="success-message">
+                Form submitted successfully!
+            </div>
+            <div *ngIf="submitError" class="error-message">
+                {{ submitError }}
+            </div>
+            <!-- File upload success notification -->
+            <div *ngIf="fileUploadSuccess" class="file-success-notification">
+                <i class="fa-solid fa-check-circle"></i>
+                File uploaded successfully!
+            </div>
+            <!-- File upload error notification -->
+            <div *ngIf="fileUploadError" class="file-error-notification">
+                <i class="fa-solid fa-exclamation-circle"></i>
+                {{ fileUploadError }}
+            </div>
+            <!-- Login overlay moved outside form-content -->
+            <div class="login-overlay" *ngIf="!authService.user">
+                <div class="login-content">
+                    <h3>Please Login to Continue</h3>
+                    <p>You need to be logged in to fill out this form</p>
+                    <button class="login-btn" (click)="login()">Login with Google</button>
+                </div>
+            </div>
+            <!--blurring part-->
+            <div class="form-content" [class.blurred]="!authService.user">
+                <div class="form-section">
+                    <h3>Select Your Role</h3>
+                    <select [(ngModel)]="formData.role">
+                        <option value="">Select role here</option>
+                        <option value="founder">Founder</option>
+                        <option value="investor">Investor</option>
+                        <option value="developer">Developer</option>
+                    </select>
+                </div>
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h3>Personal Information</h3>
+                    <h6>Full Name</h6>
+                    <input type="text" [(ngModel)]="formData.fullName" placeholder="Full Name">
+                    <h6>Phone Number</h6>
+                    <div class="num">
+                        <div class="phone-input">
+                            <input type="text" value="+91" disabled>
+                        </div>
+                        <div class="num-input">
+                            <input type="tel" [(ngModel)]="formData.phoneNumber" placeholder="Number">
+                        </div>
+                    </div>
+                    <h6>Email Address</h6>
+                    <input type="email" [(ngModel)]="formData.emailAddress" placeholder="Email Address">
+                </div>
+        
+                <!-- Location -->
+                <div class="form-section">
+                    <h3>Location</h3>
+                    <div class="gform">
+                        <div class="g1">
+                            <h6>Country</h6>
+                            <input type="text" [(ngModel)]="formData.country" placeholder="Country">
+                        </div>
+                        <div class="g2">
+                            <h6>City</h6>
+                            <input type="text" [(ngModel)]="formData.city" placeholder="City">
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Startup Information -->
+                <div class="form-section">
+                    <h3>Startup Information</h3>
+                    <h6>Startup Name</h6>
+                    <input type="text" [(ngModel)]="formData.startupName" placeholder="Enter Startup Name">
+                    <h6>Website URL</h6>
+                    <input type="text" [(ngModel)]="formData.websiteURL" placeholder="Website URL">
+                    <div class="gform">
+                        <div class="g1">
+                            <h6>Current Stage of Your Startup</h6>
+                            <input type="text" [(ngModel)]="formData.currentState" placeholder="MVP">
+                        </div>
+                        <div class="g2">
+                            <h6>What Are You Looking For?</h6>
+                            <input type="text" [(ngModel)]="formData.lookingFor" placeholder="MVP Development">
+                        </div>
+                    </div>
+                    <h6>Company LinkedIn Profile</h6>
+                    <input type="text" [(ngModel)]="formData.companyLinkedIn" placeholder="Company LinkedIn Profile">
+                    <h6>Founder's LinkedIn Profile</h6>
+                    <input type="text" [(ngModel)]="formData.foundersLinkedIn" placeholder="Founder's LinkedIn Profile">
+                    <h6>Pitch Deck Link</h6>
+                    <input type="url" [(ngModel)]="formData.pitchDeck" placeholder="Paste your pitch deck link here">
+                </div>
+        
+                <!-- Industry / Sector -->
+                <div class="form-section">
+                    <h3>Industry / Sector</h3>
+                    <h6>Search and select industry</h6>
+                    <input type="text" [(ngModel)]="formData.industry" placeholder="Search and select industry">
+                </div>
+        
+                <!-- Business Details -->
+                <div class="form-section">
+                    <h3>Business Details</h3>
+                    <h6>What Problem Does Your Startup Solve?</h6>
+                    <input [(ngModel)]="formData.problemSolved" placeholder="Describe here">
+                    <h6>Describe Your Startup</h6>
+                    <input [(ngModel)]="formData.startupDescription" placeholder="Describe here">
+                    <h6>Target Market / Audience</h6>
+                    <input [(ngModel)]="formData.targetMarket" placeholder="Target Market / Audience">
+                    <h6>Number of Customers</h6>
+                    <input type="number" [(ngModel)]="formData.numberOfCustomers" placeholder="Number of Customers" min="0">
+                </div>
+        
+                <!-- Revenue Details -->
+                <div class="form-section">
+                    <h3>Revenue Details</h3>
+                    <div class="gform">
+                        <div class="g1">
+                            <h6>Currency</h6>
+                            <input type="text" [(ngModel)]="formData.revenueCurrency" placeholder="Select Currency">
+                        </div>
+                        <div class="g2">
+                            <h6>Unit</h6>
+                            <input type="number" [(ngModel)]="formData.revenueAmount" placeholder="Select Unit" min="0">
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Funding Details -->
+                <div class="form-section">
+                    <h3>Funding Details</h3>
+                    <p>Have you raised funding before?</p>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" [(ngModel)]="formData.raisedFunding" [value]="'false'">
+                            <span class="custom-radio"></span>
+                            No
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" [(ngModel)]="formData.raisedFunding" [value]="'true'">
+                            <span class="custom-radio"></span>
+                            Yes
+                        </label>
+                    </div>
+                    <div class="gform">
+                        <div class="g1">
+                            <h6>Currency</h6>
+                            <input type="text" [(ngModel)]="formData.fundingCurrency" placeholder="Select Currency">
+                        </div>
+                        <div class="g2">
+                            <h6>Unit</h6>
+                            <input type="number" [(ngModel)]="formData.fundingAmount" placeholder="Select Unit" min="0">
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Supporting Documents -->
+                <div class="form-section">
+                    <h3>Supporting Documents</h3>
+                    <div class="upload-container" 
+                         (dragover)="onDragOver($event)"
+                         (dragleave)="onDragLeave($event)"
+                         (drop)="onDrop($event)"
+                         [class.drag-over]="isDragging">
+                        <label for="fileInput" class="upload-box">
+                          <i class="fa-solid fa-upload"></i>
+                          <p>Drag & drop your file here or click to browse</p>
+                          <p class="file-types">Supported formats: PDF, PPT (max 30MB)</p>
+                          <input type="file" id="fileInput" (change)="onFileSelected($event)" accept=".pdf,.ppt,.pptx" hidden />
+                        </label>
+                        <div *ngIf="selectedFile" class="file-info">
+                            <div class="file-icon">
+                                <i class="fa-solid" [ngClass]="{'fa-file-pdf': selectedFile.type === 'application/pdf', 'fa-file-powerpoint': selectedFile.type.includes('powerpoint')}"></i>
+                            </div>
+                            <div class="file-details">
+                                <p class="file-name">{{ selectedFile.name }}</p>
+                                <p class="file-size">{{ (selectedFile.size / (1024 * 1024)).toFixed(2) }} MB</p>
+                            </div>
+                            <button class="remove-file" (click)="removeFile()" title="Remove file">
+                                <i class="fa-solid fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- How Did You Know? -->
+                <div class="form-section">
+                    <h3>How Did You Know About MagmaScale?</h3>
+                    <h6>How Did You Get to Know About MagmaScale?</h6>
+                    <input type="text" [(ngModel)]="formData.heardFrom" placeholder="LinkedIn">
+                </div>
+        
+                <!-- Additional Information -->
+                <div class="form-section">
+                    <h3>Additional Information</h3>
+                    <h6>Is there anything else you'd like us to know about your startup?</h6>
+                    <textarea [(ngModel)]="formData.additionalInfo" placeholder="Describe here"></textarea>
+                </div>
+        
+                <!-- Confirmation -->
+                <div class="confirmation">
+                    <input type="checkbox" id="confirm" class="in-confirm" required>
+                    <label for="confirm">
+                        I confirm that the information provided is accurate.
+                    </label>
+                </div>
+            </div>
+        <p style="text-align: center; color: gray; font-style: italic;">
+          The form will be activated soon. Stay tuned!
+        </p>
+        </div>
+        <button class="apply-btn" onclick="openPopup()" style="filter: blur(1px); pointer-events: none; opacity: 0.9;">Coming Soon</button>
+
+
+        </div>
+    </div>
+    
+</div>
+<script>
+  function openPopup() {
+    document.getElementById('comingSoonPopup').style.display = 'flex';
+  }
+
+  function closePopup() {
+    document.getElementById('comingSoonPopup').style.display = 'none';
+  }
+</script>
