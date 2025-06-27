@@ -8,7 +8,7 @@
     
         <img class="person" src ="assets/person.png"/>
     </div>
-    <div class="on-board-img">  
+    <!---- <div class="on-board-img">  
             <div class="form-container" id="apply-form">
                 <h2 style="filter: blur(1px); opacity: 0.9;">Coming Soon</h2>
 
@@ -26,17 +26,16 @@
             <div *ngIf="submitError" class="error-message">
                 {{ submitError }}
             </div>
-            <!-- File upload success notification -->
+            
             <div *ngIf="fileUploadSuccess" class="file-success-notification">
                 <i class="fa-solid fa-check-circle"></i>
                 File uploaded successfully!
             </div>
-            <!-- File upload error notification -->
+            
             <div *ngIf="fileUploadError" class="file-error-notification">
                 <i class="fa-solid fa-exclamation-circle"></i>
                 {{ fileUploadError }}
             </div>
-            <!-- Login overlay moved outside form-content -->
             <div class="login-overlay" *ngIf="!authService.user">
                 <div class="login-content">
                     <h3>Please Login to Continue</h3>
@@ -44,7 +43,6 @@
                     <button class="login-btn" (click)="login()">Login with Google</button>
                 </div>
             </div>
-            <!--blurring part-->
             <div class="form-content" [class.blurred]="!authService.user">
                 <div class="form-section">
                     <h3>Select Your Role</h3>
@@ -55,7 +53,6 @@
                         <option value="developer">Developer</option>
                     </select>
                 </div>
-                <!-- Personal Information -->
                 <div class="form-section">
                     <h3>Personal Information</h3>
                     <h6>Full Name</h6>
@@ -73,7 +70,6 @@
                     <input type="email" [(ngModel)]="formData.emailAddress" placeholder="Email Address">
                 </div>
         
-                <!-- Location -->
                 <div class="form-section">
                     <h3>Location</h3>
                     <div class="gform">
@@ -88,7 +84,6 @@
                     </div>
                 </div>
         
-                <!-- Startup Information -->
                 <div class="form-section">
                     <h3>Startup Information</h3>
                     <h6>Startup Name</h6>
@@ -113,14 +108,12 @@
                     <input type="url" [(ngModel)]="formData.pitchDeck" placeholder="Paste your pitch deck link here">
                 </div>
         
-                <!-- Industry / Sector -->
                 <div class="form-section">
                     <h3>Industry / Sector</h3>
                     <h6>Search and select industry</h6>
                     <input type="text" [(ngModel)]="formData.industry" placeholder="Search and select industry">
                 </div>
         
-                <!-- Business Details -->
                 <div class="form-section">
                     <h3>Business Details</h3>
                     <h6>What Problem Does Your Startup Solve?</h6>
@@ -133,7 +126,6 @@
                     <input type="number" [(ngModel)]="formData.numberOfCustomers" placeholder="Number of Customers" min="0">
                 </div>
         
-                <!-- Revenue Details -->
                 <div class="form-section">
                     <h3>Revenue Details</h3>
                     <div class="gform">
@@ -148,7 +140,6 @@
                     </div>
                 </div>
         
-                <!-- Funding Details -->
                 <div class="form-section">
                     <h3>Funding Details</h3>
                     <p>Have you raised funding before?</p>
@@ -176,7 +167,6 @@
                     </div>
                 </div>
         
-                <!-- Supporting Documents -->
                 <div class="form-section">
                     <h3>Supporting Documents</h3>
                     <div class="upload-container" 
@@ -205,21 +195,18 @@
                     </div>
                 </div>
         
-                <!-- How Did You Know? -->
                 <div class="form-section">
                     <h3>How Did You Know About MagmaScale?</h3>
                     <h6>How Did You Get to Know About MagmaScale?</h6>
                     <input type="text" [(ngModel)]="formData.heardFrom" placeholder="LinkedIn">
                 </div>
         
-                <!-- Additional Information -->
                 <div class="form-section">
                     <h3>Additional Information</h3>
                     <h6>Is there anything else you'd like us to know about your startup?</h6>
                     <textarea [(ngModel)]="formData.additionalInfo" placeholder="Describe here"></textarea>
                 </div>
         
-                <!-- Confirmation -->
                 <div class="confirmation">
                     <input type="checkbox" id="confirm" class="in-confirm" required>
                     <label for="confirm">
@@ -235,7 +222,7 @@
 
 
         </div>
-    </div>
+    </div> --->
     
 </div>
 <script>

@@ -21,6 +21,7 @@
     padding: 0px 2px;
     border-radius: 5px;
     gap: 10px;
+    margin-left: 30px;
 }
 .navbar-nav .nav-link {
  
@@ -167,6 +168,10 @@ margin-bottom: 20px;
     .navbar-expand-lg .navbar-toggler {
         display: block !important;
     }
+    .navbar-nav{
+
+    margin-left: 0px;
+}
 }
 
 @media (min-width: 901px) {
